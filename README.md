@@ -1,10 +1,10 @@
 # AccessAI
 
-**AI-powered document clarity — for the CTRL-V Hackathon**
+## 🚀 AccessAI - CTRL + V Hackathon Submission
 
-AccessAI helps people understand confusing documents. Upload a photo of a form, letter, or label, and AccessAI extracts the text, explains it in plain language, summarizes it, translates it, and reads it aloud — all in the browser, with no account and no backend.
+AccessAI is an AI-powered accessibility tool that removes barriers in understanding documents, images, and text. It helps users extract, simplify, summarize, translate, and listen to information instantly in the browser.
 
-> Theme: *Build with AI and technology to remove barriers and improve access to information, education, healthcare, services, and opportunities.*
+Built to improve access to information for education, healthcare, services, and everyday communication.
 
 ---
 
