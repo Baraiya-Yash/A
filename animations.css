@@ -1,0 +1,116 @@
+/* ==========================================================================
+   ANIMATIONS.CSS
+   Page-load reveals, the signature "Clarity Scan" sweep, and micro-interactions.
+   ========================================================================== */
+
+/* ---- Fade / rise-in for content as it loads ---- */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-copy, .hero-visual, .section-head, .feature-card, .step, .benefit, .faq-item {
+  animation: riseIn var(--duration-slow) var(--ease-out) both;
+}
+.hero-visual { animation-delay: 80ms; }
+.feature-card:nth-child(2) { animation-delay: 60ms; }
+.feature-card:nth-child(3) { animation-delay: 120ms; }
+.feature-card:nth-child(4) { animation-delay: 180ms; }
+.feature-card:nth-child(5) { animation-delay: 240ms; }
+.feature-card:nth-child(6) { animation-delay: 300ms; }
+.step:nth-child(2) { animation-delay: 80ms; }
+.step:nth-child(3) { animation-delay: 160ms; }
+.step:nth-child(4) { animation-delay: 240ms; }
+
+/* ==========================================================================
+   SIGNATURE ELEMENT: The Clarity Scan
+   A highlight beam sweeps down over the hero card, and the "raw" text
+   fades out as the "clear" text fades in beneath it — literally dramatizing
+   what the product does to a document.
+   ========================================================================== */
+.scan-body { --scan-duration: 3.2s; }
+
+.scan-text-raw {
+  animation: rawFade var(--scan-duration) ease-in-out infinite;
+}
+.scan-text-clear {
+  animation: clearFade var(--scan-duration) ease-in-out infinite;
+}
+@keyframes rawFade {
+  0%, 40%   { opacity: 0.55; filter: blur(0); }
+  55%, 100% { opacity: 0;    filter: blur(2px); }
+}
+@keyframes clearFade {
+  0%, 40%   { opacity: 0; transform: translateY(4px); }
+  60%, 100% { opacity: 1; transform: translateY(0); }
+}
+
+.scan-sweep {
+  position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-teal), var(--color-highlight), var(--color-teal), transparent);
+  box-shadow: 0 0 16px 2px rgba(20, 184, 166, 0.55);
+  animation: sweepDown var(--scan-duration) ease-in-out infinite;
+}
+@keyframes sweepDown {
+  0%   { top: 0%;   opacity: 0; }
+  8%   { opacity: 1; }
+  45%  { top: 100%; opacity: 1; }
+  55%  { opacity: 0; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ==========================================================================
+   LOADING STATES
+   ========================================================================== */
+
+/* Generic spinner, used while OCR / AI requests are in flight */
+.spinner {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid currentColor; border-top-color: transparent;
+  animation: spin 0.7s linear infinite; display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Skeleton shimmer for text areas while content is generating */
+.skeleton-line {
+  height: 0.9em; margin-bottom: 0.6em; border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-border) 25%, rgba(20,184,166,0.18) 50%, var(--color-border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+.skeleton-line:last-child { width: 70%; }
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Status pill pulse while OCR/AI is busy */
+.status-pill.busy::before {
+  content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; margin-right: 6px; animation: pulseDot 1s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%      { opacity: 1;   transform: scale(1.1); }
+}
+
+/* ==========================================================================
+   MICRO-INTERACTIONS
+   ========================================================================== */
+.dropzone { transition: border-color var(--duration-fast), background var(--duration-fast), transform var(--duration-fast); }
+.dropzone.drag-over { transform: scale(1.01); }
+
+.toast { will-change: transform, opacity; }
+
+.history-card { animation: riseIn var(--duration-med) var(--ease-out) both; }
+
+/* Nav underline / mobile menu open icon morph */
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Copy button confirmation flash */
+@keyframes flashSuccess {
+  0%   { background: var(--color-teal-light); }
+  100% { background: var(--surface-card); }
+}
+.btn-icon.success { animation: flashSuccess 900ms ease-out; }

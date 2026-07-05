@@ -1,0 +1,121 @@
+/* ==========================================================================
+   THEMES.CSS
+   Design tokens: color, typography, spacing, radius, shadow.
+   Light theme is default; dark theme activates via [data-theme="dark"].
+   ========================================================================== */
+
+:root {
+  /* ---- Brand palette ---- */
+  --color-paper: #F7F8FA;
+  --color-paper-raised: #FFFFFF;
+  --color-ink: #1B1F3B;
+  --color-ink-soft: #2A3057;
+  --color-slate: #5B6472;
+  --color-slate-light: #8A93A3;
+  --color-border: rgba(27, 31, 59, 0.10);
+
+  --color-teal: #14B8A6;
+  --color-teal-dark: #0D9488;
+  --color-teal-light: #CFF7F1;
+  --color-highlight: #FFD23F;
+  --color-highlight-soft: #FFF3C4;
+
+  --color-danger: #E4572E;
+  --color-success: #14B8A6;
+
+  /* ---- Surfaces ---- */
+  --surface-bg: var(--color-paper);
+  --surface-card: var(--color-paper-raised);
+  --surface-glass: rgba(255, 255, 255, 0.6);
+  --surface-glass-border: rgba(255, 255, 255, 0.8);
+  --surface-overlay: rgba(27, 31, 59, 0.45);
+
+  /* ---- Text ---- */
+  --text-primary: var(--color-ink);
+  --text-secondary: var(--color-slate);
+  --text-inverse: #FFFFFF;
+  --text-on-accent: #08201D;
+
+  /* ---- Typography ---- */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Atkinson Hyperlegible', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6rem;
+
+  /* ---- Radius & shadow ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 2px 8px rgba(27, 31, 59, 0.06);
+  --shadow-md: 0 8px 24px rgba(27, 31, 59, 0.10);
+  --shadow-lg: 0 16px 48px rgba(27, 31, 59, 0.16);
+  --shadow-glass: 0 8px 32px rgba(27, 31, 59, 0.10);
+
+  /* ---- Layout ---- */
+  --container-max: 1180px;
+  --header-height: 76px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-med: 350ms;
+  --duration-slow: 900ms;
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   DARK THEME
+   ========================================================================== */
+[data-theme="dark"] {
+  --color-paper: #14172B;
+  --color-paper-raised: #1B1F3B;
+  --color-ink: #F2F3F7;
+  --color-ink-soft: #D7DAE5;
+  --color-slate: #A6ADBD;
+  --color-slate-light: #7C8397;
+  --color-border: rgba(255, 255, 255, 0.10);
+
+  --color-teal: #2DD4BF;
+  --color-teal-dark: #14B8A6;
+  --color-teal-light: rgba(45, 212, 191, 0.16);
+  --color-highlight: #FFD23F;
+  --color-highlight-soft: rgba(255, 210, 63, 0.16);
+
+  --surface-bg: var(--color-paper);
+  --surface-card: var(--color-paper-raised);
+  --surface-glass: rgba(27, 31, 59, 0.55);
+  --surface-glass-border: rgba(255, 255, 255, 0.08);
+  --surface-overlay: rgba(0, 0, 0, 0.55);
+
+  --text-primary: var(--color-ink);
+  --text-secondary: var(--color-slate);
+  --text-inverse: #14172B;
+  --text-on-accent: #08201D;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+  color-scheme: dark;
+}
+
+/* Respect OS preference on first visit, before JS sets an explicit choice */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    color-scheme: dark;
+  }
+}
