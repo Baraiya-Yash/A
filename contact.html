@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — AccessAI</title>
+<meta name="description" content="Get in touch with the AccessAI team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="AccessAI home">
+      <span class="logo-mark" aria-hidden="true"></span>
+      AccessAI
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="workspace.html">AI Workspace</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="workspace.html" class="btn btn-primary btn-small">Try it now</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+  <section class="page-hero">
+    <p class="eyebrow">Contact</p>
+    <h1>Questions, feedback, or ideas?</h1>
+    <p class="page-hero-sub">We'd love to hear from you — reach out and we'll get back to you soon.</p>
+  </section>
+
+  <section class="content-block">
+    <div class="contact-grid">
+      <form class="contact-form glass" id="contactForm" novalidate>
+        <div class="form-field">
+          <label for="nameInput">Name</label>
+          <input type="text" id="nameInput" name="name" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="emailInput">Email</label>
+          <input type="email" id="emailInput" name="email" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="messageInput">Message</label>
+          <textarea id="messageInput" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="contact-info">
+        <h2>Other ways to reach us</h2>
+        <ul>
+          <li><strong>Email</strong><br>yashbaraiya1010@gmail.com</li>
+          <li><strong>GitHub</strong><br>github.com/accessai/accessai</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <p>&copy; 2026 AccessAI. Built for the CTRL-V Hackathon.</p>
+  </div>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

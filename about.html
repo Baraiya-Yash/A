@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — AccessAI</title>
+<meta name="description" content="AccessAI's mission is to remove barriers to information by making any document instantly understandable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="AccessAI home">
+      <span class="logo-mark" aria-hidden="true"></span>
+      AccessAI
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="workspace.html">AI Workspace</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="workspace.html" class="btn btn-primary btn-small">Try it now</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+  <section class="page-hero">
+    <p class="eyebrow">About AccessAI</p>
+    <h1>Information shouldn't require a translator, a lawyer, or a medical degree.</h1>
+    <p class="page-hero-sub">AccessAI was built for the CTRL-V Hackathon around one theme: using AI to remove barriers to education, healthcare, services, and opportunity.</p>
+  </section>
+
+  <section class="content-block">
+    <div class="content-narrow">
+      <h2>The problem</h2>
+      <p>Every day, people face documents they can't fully understand: a hospital consent form full of clinical terms, a government benefits letter in dense legal language, a lease written for lawyers instead of tenants. For someone with limited literacy, a language barrier, or a disability, these documents aren't just inconvenient — they're a genuine barrier to healthcare, housing, education, and opportunity.</p>
+
+      <h2>The approach</h2>
+      <p>AccessAI turns a photo of any document into something anyone can understand. On-device OCR extracts the text, an AI model rewrites it in plain language, and built-in translation and text-to-speech make sure the result reaches people however they read best — visually, aloud, or in their own language.</p>
+
+      <h2>Who it's for</h2>
+      <p>Immigrants navigating paperwork in a new language, older adults managing medical letters, students decoding financial aid forms, and anyone who has ever stared at a form and thought, "I have no idea what this means."</p>
+    </div>
+  </section>
+
+  <section class="content-block alt">
+    <div class="content-narrow">
+      <h2>Built with</h2>
+      <ul class="tech-list">
+        <li>HTML5, CSS3, and vanilla JavaScript — no framework overhead</li>
+        <li>Tesseract.js for in-browser optical character recognition</li>
+        <li>GROQ API for explanation, summarization, and translation</li>
+        <li>Web Speech API for text-to-speech</li>
+        <li>LocalStorage for private, on-device history</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <p>&copy; 2026 AccessAI. Built for the CTRL-V Hackathon.</p>
+  </div>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Workspace — AccessAI</title>
+<meta name="description" content="Upload a document or image and get instant OCR, plain-language explanation, summary, translation, and text-to-speech.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="AccessAI home">
+      <span class="logo-mark" aria-hidden="true"></span>
+      AccessAI
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="workspace.html" aria-current="page">AI Workspace</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content" class="workspace">
+  <div class="workspace-header">
+    <p class="eyebrow">AI Workspace</p>
+    <h1>Turn any document into something clear</h1>
+    <p class="workspace-sub">Upload a photo or screenshot to get started.</p>
+  </div>
+
+  <div class="workspace-grid">
+
+    <!-- ===== LEFT: UPLOAD & SOURCE TEXT ===== -->
+    <section class="panel upload-panel glass" aria-labelledby="upload-heading">
+      <h2 id="upload-heading" class="visually-hidden">Upload document</h2>
+
+      <div class="dropzone" id="dropzone" tabindex="0" role="button"
+           aria-label="Upload an image. Click, or drag and drop a file here.">
+        <input type="file" id="fileInput" accept="image/*" class="visually-hidden" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+        <p class="dropzone-text"><strong>Click to upload</strong> or drag and drop</p>
+        <p class="dropzone-hint">JPG, PNG, or WEBP</p>
+      </div>
+
+      <div class="preview-area" id="previewArea" hidden>
+        <img id="imagePreview" alt="Preview of the uploaded document" class="image-preview">
+        <button class="btn btn-ghost btn-small" id="changeImageBtn" type="button">Change image</button>
+      </div>
+
+      <div class="panel-divider" role="separator"></div>
+
+      <div class="source-text-block">
+        <div class="source-text-header">
+          <h3>Extracted text</h3>
+          <span class="status-pill" id="ocrStatus">Waiting for upload</span>
+        </div>
+        <div class="source-text-body" id="ocrOutput" tabindex="0" aria-live="polite">
+          <p class="empty-state">Extracted text will appear here once you upload a document.</p>
+        </div>
+      </div>
+
+      <div class="panel-actions">
+        <button class="btn btn-primary" id="explainBtn" type="button" disabled>Explain</button>
+        <button class="btn btn-secondary" id="summarizeBtn" type="button" disabled>Summarize</button>
+        <button class="btn btn-ghost" id="clearBtn" type="button">Clear</button>
+      </div>
+    </section>
+
+    <!-- ===== RIGHT: AI RESULTS ===== -->
+    <section class="panel results-panel glass" aria-labelledby="results-heading">
+      <h2 id="results-heading" class="visually-hidden">AI results</h2>
+
+      <div class="results-toolbar">
+        <div class="tabs" role="tablist" aria-label="Result type">
+          <button class="tab" id="tabExplain" role="tab" aria-selected="true" aria-controls="resultOutput">Explanation</button>
+          <button class="tab" id="tabSummary" role="tab" aria-selected="false" aria-controls="resultOutput">Summary</button>
+        </div>
+        <div class="translate-control">
+          <label for="languageSelect" class="visually-hidden">Translate to</label>
+          <select id="languageSelect" aria-label="Translate result to language">
+            <option value="">Translate to…</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Mandarin Chinese">Mandarin Chinese</option>
+            <option value="Arabic">Arabic</option>
+            <option value="French">French</option>
+            <option value="Portuguese">Portuguese</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Urdu">Urdu</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result-output" id="resultOutput" role="tabpanel" aria-live="polite">
+        <p class="empty-state">Upload a document and choose <strong>Explain</strong> or <strong>Summarize</strong> to see results here.</p>
+      </div>
+
+      <div class="result-toolbar-actions">
+        <button class="btn btn-icon" id="speakBtn" type="button" disabled aria-label="Read result aloud">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          <span>Listen</span>
+        </button>
+        <button class="btn btn-icon" id="copyBtn" type="button" disabled aria-label="Copy result to clipboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Copy</span>
+        </button>
+        <button class="btn btn-icon" id="downloadBtn" type="button" disabled aria-label="Download result as text file">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 15V3M12 15l-4-4M12 15l4-4"/><path d="M4 17v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <span>Download</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== HISTORY ===== -->
+  <section class="history-section" aria-labelledby="history-heading">
+    <div class="history-header">
+      <h2 id="history-heading">Recent history</h2>
+      <button class="btn btn-ghost btn-small" id="clearHistoryBtn" type="button">Clear history</button>
+    </div>
+    <ul class="history-list" id="historyList">
+      <li class="empty-state">Your recent documents will show up here.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <p>&copy; 2026 AccessAI. Built for the CTRL-V Hackathon.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/ocr.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/translate.js"></script>
+<script src="js/tts.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Local environment / editor files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Keep API keys out of version control.
+# NOTE: config.js currently holds the GROQ API key inline for simplicity.
+# For a public repo, remove the real key from config.js before pushing,
+# or refactor config.js to read from a separate untracked file.
